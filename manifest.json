@@ -3,7 +3,7 @@
   "name": "TCGPlayer Seller Aggregation",
   "version": "1.0",
   "description": "Identifies the fewest (non-direct) sellers needed to purchase all cards",
-  "homepage_url": "https://github.com/Voldrix/TCGPsellerAgg.git",
+  "homepage_url": "https://github.com/Voldrix/TCGPsellerAgg",
   "icons": {
     "32": "icons/TCGPsellerAgg32.png",
     "48": "icons/TCGPsellerAgg48.png",
