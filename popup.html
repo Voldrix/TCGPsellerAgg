@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang=en><head><meta charset=utf-8>
+<title>TCGP Seller Aggregation</title>
+<style>
+body {font-family:arial;font-size:14px;line-height:18px;color:#FFF;background-color:#444;padding:0;margin:0;}
+div {padding:0;margin:0;}
+a {all:unset;cursor:pointer;}
+a:hover {text-decoration:none;}
+td {border:1px solid black;}
+.nestedTable td {border:none;}
+table button {font-size:12px;line-height:14px;color:#FFF;padding:2px 6px;border:none;background:#0008;border-radius:7px;margin:0 0 0 8px;cursor:pointer;}
+table button:hover {background:#3338;}
+.title {text-align:center;background:#000;padding:1px 4px 2px 4px;}
+.cart {display:flex;flex-flow:column nowrap;justify-content:start;align-items:left;margin:4px;}
+.cardTile {display:flex;flex-flow:row nowrap;padding:2px;}
+.cardTile:hover {background:#8883;}
+.cardTile svg {padding:0;margin:0;vertical-align:top;}
+.cardName {flex-grow:1;}
+.cardRemove {font-size:16px;color:#800;padding:0 3px 0 5px;cursor:pointer;}
+.cardRemove:hover {background:#8004;}
+#aggBtn {display:block;color:#FFF;padding:2px 6px;border:none;background:#000;width:100%;cursor:pointer;}
+
+</style></head><body>
+<div class=title>TCGP Seller Aggregation</div>
+<div id=cart></div>
+<div id=aggregation></div>
+<button id=aggBtn>Aggregate</button>
+</body>
+<script src=popup.js></script>
+</html>

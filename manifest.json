@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "TCGPlayer Seller Aggregation",
+  "version": "1.0",
+  "description": "Identifies the fewest (non-direct) sellers needed to purchase all cards",
+  "homepage_url": "https://github.com/Voldrix/TCGPsellerAgg.git",
+  "icons": {
+    "32": "icons/TCGPsellerAgg32.png",
+    "48": "icons/TCGPsellerAgg48.png",
+    "96": "icons/TCGPsellerAgg96.png",
+    "240": "icons/TCGPsellerAgg240.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.tcgplayer.com/*"],
+      "css": ["style.css"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false,
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "cookies",
+    "webRequest",
+    "https://www.tcgplayer.com/*",
+    "https://mp-search-api.tcgplayer.com/*",
+    "https://mpgateway.tcgplayer.com/*"
+  ],
+  "browser_action": {
+    "default_icon": "icons/TCGPsellerAgg32.png",
+    "default_title": "TCGPlayer Seller Aggregation",
+    "default_popup": "popup.html"
+  },
+  "developer": {
+    "name": "Ben Goriesky",
+    "url": "https://voldrixia.com/"
+  }
+}
+
