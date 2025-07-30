@@ -4,11 +4,10 @@ exportFunction(removeCard, window, { defineAs: "removeCard" });
 exportFunction(loadCheck, window, { defineAs: "loadCheck" });
 
 var div = document.createElement("div");
-var removeBtn = '<button id=TCGPSellerAggBtn type=button onclick=removeCard()>Remove From Virtual Cart</button>';
-var addBtn = '<button id=TCGPSellerAggBtn type=button onclick=addCard()>Add to Virtual Cart</button>';
+var removeBtn = '<button class=TCGPSellerAggBtn type=button onclick=removeCard()>Remove From Virtual Cart</button>';
+var addBtn = '<button class=TCGPSellerAggBtn type=button onclick=addCard(false)>Add to Virtual Cart</button> <button class=TCGPSellerAggBtn type=button onclick=addCard(true)>Foil</button>';
 loadCheck();
 browser.runtime.onMessage.addListener(loadCheck);
-
 
 
 function loadCheck() {
@@ -27,17 +26,14 @@ function loadCheck() {
 }
 
 
-
 function addResponse(message) {
   div.innerHTML = (message == 1) ? removeBtn : 'Error adding card<br>' + addBtn;
 }
 
 
-
 function removeResponse(message) {
   div.innerHTML = (message == 1) ? addBtn : 'Error removing card<br>' + removeBtn;
 }
-
 
 
 function queryResponse(message) {
@@ -46,8 +42,7 @@ function queryResponse(message) {
 }
 
 
-
-function addCard() {
+function addCard(foil) {
   var cardName = document.getElementsByClassName('product-details__name')[0].innerText.split('-')[0].trim();
   var manaCost = document.getElementsByClassName('casting-cost__mana')[0];
   var manaStr = '';
@@ -57,24 +52,21 @@ function addCard() {
       for(m of mana)
         manaStr += m.outerHTML;
   }
-  browser.runtime.sendMessage({ name: cardName, id: 'a' + id, mana: manaStr })
+  browser.runtime.sendMessage({ msgType: 'addCard', name: cardName, id: id, foil: foil, mana: manaStr })
   .then(addResponse, handleError);
 }
 
 
-
 function removeCard() {
-  browser.runtime.sendMessage({ id: 'r' + id })
+  browser.runtime.sendMessage({ msgType: 'removeCard', id: id })
   .then(removeResponse, handleError);
 }
 
 
-
 function queryCard() {
-  browser.runtime.sendMessage({ id: 'q' + id })
+  browser.runtime.sendMessage({ msgType: 'queryCard', id: id })
   .then(queryResponse, handleError);
 }
-
 
 
 function handleError(error) {

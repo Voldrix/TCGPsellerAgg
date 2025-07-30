@@ -1,2 +1,2 @@
-#TCGPSellerAggBtn {display:block;color:#0FF;font-weight:bold;margin:16px auto 0 auto;padding:8px 16px;border:2px solid #000;background:#261695;border-radius:9px;cursor:pointer;}
-#TCGPSellerAggBtn:hover {background:#3726aa;}
+.TCGPSellerAggBtn {display:inline-block;color:#0FF;font-weight:bold;margin:16px auto 0 auto;padding:8px 16px;border:2px solid #000;background:#261695;border-radius:9px;cursor:pointer;}
+.TCGPSellerAggBtn:hover {background:#3726aa;}
