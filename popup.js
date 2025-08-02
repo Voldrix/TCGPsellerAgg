@@ -1,4 +1,4 @@
-var cards, cartCookie, sellers, sellerTotals = [];
+var cards, cartCookie, sellers;
 getCards();
 
 browser.cookies.get({ url: 'https://www.tcgplayer.com', name: 'StoreCart_PRODUCTION' }).then((c) => {
@@ -19,7 +19,7 @@ function cardsResponse(_cards) {
     let cell = row.insertCell();
     cell.innerHTML = c.mana;
     cell = row.insertCell();
-    cell.innerHTML = `<a href="https://www.tcgplayer.com/product/${c.id}/${c.name.replaceAll(' ','-')}?Language=English">${c.name}</a>`;
+    cell.innerHTML = `<a href="https://www.tcgplayer.com/product/${c.id}?Language=English">${c.name}</a>`;
     cell = row.insertCell();
     if(c.inCart)
       cell.innerHTML = '<svg class="inCartIcon" cardid="' + c.id + '" xmlns="http://www.w3.org/2000/svg" height="18px" width="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>';
@@ -76,8 +76,7 @@ function aggregate3(_sellers) {
   refreshBtn.style.display = 'none';
   aggBtn.style.display = 'none';
   aggregation.innerHTML = '';
-  sellerTotals = [];
-  var count = 0, maxAggregation = 0;
+  var count = 0, maxAggregation = 0, sellerTotals = [];
 
   for(card of cards) { //max aggregation & min cost
    if(card.inCart) continue;
@@ -134,7 +133,7 @@ function aggregate3(_sellers) {
 
 
   var x = aggregation.getElementsByClassName('sellerHeader');  //onClick listeners
-  x[0].classList.remove('accordian');
+  if(x.length) x[0].classList.remove('accordian');
   for(xc of x)
     xc.addEventListener('click', e=>{e.target.classList.toggle('accordian'); e.target.parentElement.classList.toggle('accordian');});
   x = aggregation.getElementsByClassName('addToCartX'); //onClick listeners
@@ -148,6 +147,7 @@ function aggregate3(_sellers) {
 
 function addAllToCart() {
   var tbl = this.parentElement.parentElement.nextElementSibling;
+  this.parentElement.parentElement.classList.remove('accordian');
   var cardBtns = tbl.getElementsByClassName('addToCartX');
   for(cb of cardBtns)
     addToCart(cb);
@@ -171,7 +171,7 @@ function addToCart(btn) {
         .then(x => {
           if(card) {
             card.inCart = true;
-            seller.inCart = 1;
+            seller.inCart = true;
           }
         });
       }
@@ -201,7 +201,7 @@ function createAnonymousCart() {
         path: '/'
       });
     }
-    else console.log('create Anonymous Cart Fail', this);
+    else console.log('Create Anonymous Cart Fail', this);
   }
   xhttp.open('POST', 'https://mpgateway.tcgplayer.com/v1/cart/create/anonymouscart', true);
   xhttp.send();
