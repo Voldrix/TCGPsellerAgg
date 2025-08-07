@@ -1,7 +1,7 @@
 var btnBox, id, path, timerId;
 var div = document.createElement("div");
 var removeBtn = "<button class=TCGPSellerAggBtn type=button onclick=window.postMessage('Remove','*')>Remove From Virtual Cart</button>";
-var addBtn = "<button class=TCGPSellerAggBtn type=button onclick=window.postMessage('Normal','*')>Add to Virtual Cart</button> <button class=TCGPSellerAggBtn type=button onclick=window.postMessage('Normal','*')>Foil</button>";
+var addBtn = "<button class=TCGPSellerAggBtn type=button onclick=window.postMessage('Normal','*')>Add to Virtual Cart</button> <button class=TCGPSellerAggBtn type=button onclick=window.postMessage('Foil','*')>Foil</button>";
 loadCheck();
 chrome.runtime.onMessage.addListener(loadCheck);
 
