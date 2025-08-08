@@ -25,7 +25,6 @@
   },
   "permissions": [
     "cookies",
-    "webRequest",
     "https://www.tcgplayer.com/*",
     "https://mp-search-api.tcgplayer.com/*",
     "https://mpgateway.tcgplayer.com/*"

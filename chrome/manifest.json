@@ -24,7 +24,6 @@
   },
   "permissions": [
     "cookies",
-    "webRequest",
     "storage"
   ],
   "host_permissions": [
