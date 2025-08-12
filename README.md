@@ -1,9 +1,8 @@
-# TCGPsellerAgg
-__TCGPlayer Seller Aggregation__\
+# TCGPlayer Seller Aggregation
 __A browser extension for TCGPlayer.com__\
 __Identifies the fewest (non-direct) sellers needed to purchase all cards__
 
-[Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tcgpselleragg/) | [Chrome Web Store](https://chromewebstore.google.com/detail/tcgplayer-seller-aggregat/aknigfoobklbelaabeplhkcainaledjp)
+[Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tcgpsell eragg/) // [Chrome Web Store](https://chromewebstore.google.com/detail/tcgplayer-seller-aggregat/aknigfoobklbelaabeplhkcainaledjp)
 
 ### Info
 
